@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The Flag</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="icons/brabant.jpg" type="image/x-icon">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="main-container">
+        <div class="start-container">
+            <h1>Guess The Flag</h1>
+            <p>Guess the correct flag to streak</p>
+            <button id="start-button">Start</button>
+        </div>
+
+        <div class="game-container" style="display: none;">
+            <div class="info-container">
+                <p id="score-label">Streak: 0 | Score: 0</p>
+            </div>
+            <div class="title-container"><h1>What flag is it?</h1></div>
+            <div class="flag-container">
+                <img src="https://flagcdn.com/w320/nl.png" id="flag">
+            </div>
+            <div class="flag-options">
+                <button class="flag-button" id="1">Flag 1</button>
+                <button class="flag-button" id="2">Flag 2</button>
+                <button class="flag-button" id="3">Flag 3</button>
+                <button class="flag-button" id="4">Flag 4</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
