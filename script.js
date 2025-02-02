@@ -20,7 +20,7 @@ async function setup() {
 
 async function getCountriesJSON() {
     try {
-        let response = await fetch("https://flagcdn.com/en/codes.json");
+        let response = await fetch("country.json");
         allCountries = await response.json();
         countryKeys = Object.keys(allCountries);
     } catch (error) {
