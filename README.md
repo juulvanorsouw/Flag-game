@@ -16,12 +16,7 @@ Flag images were obtained from **[Flagpedia.net](https://flagpedia.net/)**.
 ## 🚀 How to Play
 1. A random flag appears on the screen.  
 2. Choose the correct country from multiple options.  
-3. Get feedback instantly and try again if needed!  
-
-## 🔮 Future Improvements
-- Add difficulty levels  
-- Implement a score system  
-- Include a timer mode  
+3. Get a streak and try again if needed!  
 
 Feel free to try it out and have fun! 🎉  
 
