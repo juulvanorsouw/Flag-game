@@ -75,7 +75,7 @@ function selectedFlag(e) {
         gameOver();
     }
 
-    document.getElementById("score-label").innerHTML = `Streak: ${streak} | Score: ${score}`;
+    document.getElementById("score-label").innerHTML = `Streak: ${streak}`;
 }
 
 function drawFlag() {
