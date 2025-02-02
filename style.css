@@ -14,6 +14,7 @@ body {
     height: 100%;
 }
 
+/* Global text color */
 body,
 h1, h2, h3, h4, h5, h6,
 p, a, span, div {
@@ -26,24 +27,16 @@ p, a, span, div {
     z-index: 0;
     width: 400px;
     margin-top: 50px;
-
     display: flex;
     flex-direction: column;
     text-align: center;
-
     background: rgba(255, 255, 255, 0.15);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-#start-button {
-    width: 100px;
-    height: 44px;
-    font-size: 100%;
-    background-color: #405cf5;
+    padding: 1rem;
 }
 
 /* GAME BOX */
@@ -57,17 +50,16 @@ p, a, span, div {
     margin-left: 8%;
     margin-right: 8%;
     margin-top: 100px;
-
     background: rgba(255, 255, 255, 0.1);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-
     display: none;
 }
 
+/* INFO CONTAINER */
 .info-container {
     margin-top: 25px;
     width: 320px;
@@ -92,61 +84,56 @@ p, a, span, div {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
-    .flag-button {
-        width: 320px;
-        height: 40px;
-        padding: 5px;
-        margin: 2px;
-
-        appearance: button;
-        backface-visibility: hidden;
-        background-color: #405cf5;
-        border-radius: 6px;
-        border-width: 0;
-        box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .1) 0 2px 5px 0, rgba(0, 0, 0, .07) 0 1px 1px 0;
-        box-sizing: border-box;
-        color: #fff;
-        cursor: pointer;
-        font-size: 15px;
-
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-
-        font-size: 100%;
-        color: white;
-        background-color: #405cf5;
-    }
-
     margin-top: 25px;
     margin-bottom: 50px;
 }
 
-/* RESULT CONTAINER */
+/* FLAG BUTTON & GAME BUTTONS (Start and Restart) Styling */
+#start-button,
+#restart-button,
+.flag-options .flag-button {
+    width: 320px;
+    height: 40px;
+    padding: 5px;
+    margin: 2px auto;
+    background-color: #76807e;
+    border-radius: 6px;
+    border: none;
+    box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
+                rgba(50, 50, 93, 0.1) 0 2px 5px 0,
+                rgba(0, 0, 0, 0.07) 0 1px 1px 0;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background-color 0.3s;
+}
+
+#start-button:hover,
+#restart-button:hover,
+.flag-options .flag-button:hover {
+    background-color: #4d4d4e;
+}
+
+/* RESULT CONTAINER (Same as START CONTAINER) */
 .result-container {
     position: absolute;
     z-index: 0;
     width: 400px;
     margin-top: 50px;
-
     display: flex;
     flex-direction: column;
     text-align: center;
-
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.15);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-#restart-button {
-    width: 100px;
-    height: 44px;
-    font-size: 100%;
-    background-color: #405cf5;
+    padding: 1rem;
 }
 
 /* MOBILE */
@@ -159,23 +146,16 @@ p, a, span, div {
         margin-top: 70px;
         width: 330px;
     }
-
     .game-container {
         margin-top: 10px;
         padding: 2px;
         width: 330px;
     }
-
-    .flag-container {
-        img {
-            margin-top: -20px;
-            transform: scale(0.8);
-        }
+    .flag-container img {
+        margin-top: -20px;
+        transform: scale(0.8);
     }
-
-    .flag-options {
-        .flag-button {
-            width: 250px;
-        }
+    .flag-options .flag-button {
+        width: 250px;
     }
 }
