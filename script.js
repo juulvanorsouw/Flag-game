@@ -115,7 +115,13 @@ function shuffle(array) {
 }
 
 function gameOver() {
-    alert(`Game Over! Your final score: ${score}`);
+    document.querySelector(".game-container").style.display = "none";
+    document.querySelector(".result-container").style.display = "flex";
+    document.getElementById("final-streak").innerText = streak;
+    document.getElementById("restart-button").addEventListener("click", restartGame);
+}
+
+function restartGame() {
     location.reload();
 }
 
