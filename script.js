@@ -5,14 +5,12 @@ let correctID = 0;
 let flagButtons = [];
 let allCountries = {};
 let countryKeys = [];
-let randomCountries = [];
 
 /* FUNCTIONS */
 async function setup() {
     await getCountriesJSON();
     document.getElementById("start-button").addEventListener("click", startGame);
     flagButtons = document.getElementsByClassName("flag-button");
-
     for (let button of flagButtons) {
         button.addEventListener("click", selectedFlag);
     }
@@ -33,13 +31,10 @@ function startGame() {
         alert("Country data is still loading. Please wait a moment.");
         return;
     }
-
     document.querySelector(".start-container").style.display = "none";
     document.querySelector(".game-container").style.display = "flex";
-
     score = 0;
     streak = 0;
-    getRandomCountries();
     drawFlag();
 }
 
@@ -48,19 +43,6 @@ class Country {
         this.name = name;
         this.code = code;
         this.flagUrl = `https://flagcdn.com/w320/${this.code}.png`;
-    }
-}
-
-function getRandomCountries() {
-    randomCountries = [];
-
-    while (randomCountries.length < 30) {
-        let randomIndex = Math.floor(Math.random() * countryKeys.length);
-        let countryCode = countryKeys[randomIndex];
-
-        if (!randomCountries.some(country => country.code === countryCode)) {
-            randomCountries.push(new Country(allCountries[countryCode], countryCode));
-        }
     }
 }
 
@@ -79,18 +61,20 @@ function selectedFlag(e) {
 }
 
 function drawFlag() {
-    if (score >= randomCountries.length) {
-        gameOver();
-        return;
-    }
+    // Choose a random correct country from the full list
+    let randomIndex = Math.floor(Math.random() * countryKeys.length);
+    let correctCode = countryKeys[randomIndex];
+    let currentCountry = new Country(allCountries[correctCode], correctCode);
 
-    let currentCountry = randomCountries[score];
+    // Set the flag image source to the correct country's flag
+    document.getElementById("flag").src = currentCountry.flagUrl;
+
+    // Build the answer options including the correct country
     let options = new Set([currentCountry]);
-
     while (options.size < 4) {
-        let randomIndex = Math.floor(Math.random() * countryKeys.length);
-        let code = countryKeys[randomIndex];
-
+        let randIdx = Math.floor(Math.random() * countryKeys.length);
+        let code = countryKeys[randIdx];
+        // Only add if this country isn’t already in the options
         if (!Array.from(options).some(c => c.code === code)) {
             options.add(new Country(allCountries[code], code));
         }
@@ -99,11 +83,13 @@ function drawFlag() {
     let shuffledOptions = Array.from(options);
     shuffle(shuffledOptions);
 
-    document.getElementById("flag").src = currentCountry.flagUrl;
-
+    // Assign option text to the flag buttons and store the id for the correct answer
     shuffledOptions.forEach((country, index) => {
-        document.getElementById((index + 1).toString()).innerHTML = country.name;
-        if (country.name === currentCountry.name) correctID = index + 1;
+        let buttonId = (index + 1).toString();
+        document.getElementById(buttonId).innerHTML = country.name;
+        if (country.name === currentCountry.name) {
+            correctID = index + 1;
+        }
     });
 }
 
